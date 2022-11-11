@@ -1,0 +1,13 @@
+body {
+  background-image: image-set(
+    url("/img/background-default.png") 1x,
+    url("/img/background-2560x1440.png") 2x,
+    url("/img/background-3840x2400.jpg") 4x
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  @media (min-width: 1538px) {
+    background-position: top;
+  }
+}

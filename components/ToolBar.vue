@@ -1,0 +1,52 @@
+<script setup>
+import { vOnClickOutside } from '@vueuse/components'
+import { EnvelopeOpenIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
+const isOpen = ref(false);
+const onSearchFocused = (event) => {
+    event.target.placeholder = 'Search work and your PC';
+}
+const clickOutside = () => {
+    isOpen.value = false
+}
+
+const keyupHandler = (event) => {
+    if (event.keyCode === 27) {
+        isOpen.value = false;
+    }
+}
+
+onMounted(() => {
+    document.addEventListener('keyup', keyupHandler)
+})
+</script>
+
+<template>
+    <div v-on-click-outside="clickOutside" class="z-50">
+        <transition enter-active-class="transition duration-200 transform ease-out"
+            enter-from-class="translate-y-full opacity-0" enter-to-class="translate-y-0 opacity-100"
+            leave-active-class="transition duration-200 transform ease-out" leave-from-class="translate-y-0 opacity-100"
+            leave-to-class="translate-y-10 opacity-0">
+            <div v-if="isOpen"
+                class="w-full lg:w-5/12 2xl:w-4/12 h-auto bg-gray-800 rounded-md border border-gray-700 bg-opacity-90 backdrop-blur-sm absolute bottom-14 lg:bottom-16 left-0 lg:left-2 p-6">
+                <div>
+                    <form action="" class="relative">
+                        <MagnifyingGlassIcon class="w-4 absolute top-1/2 -translate-y-1/2 left-4 text-gray-300" />
+                        <input type="text" placeholder="Type here to search"
+                            class="bg-gray-900 w-full px-12 py-2.5 text-sm placeholder:text-gray-300 focus:placeholder:text-gray-200 rounded-md border-b-2 border-b-sky-500 focus:outline-none focus:ring-0 text-white"
+                            @focus="onSearchFocused">
+                    </form>
+                </div>
+            </div>
+        </transition>
+        <div class="text-white bg-gray-800 py-1.5 px-2.5 border-t border-t-gray-600 bg-opacity-80 backdrop-blur-sm">
+            <button type="button" @click="isOpen = !isOpen"
+                class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default focus:outline-none focus:ring-0">
+                <img src="/img/windows-logo.svg" class="w-6" alt="">
+            </button>
+            <button type="button"
+                class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default">
+                <EnvelopeOpenIcon class="w-6 text-purple-300" />
+            </button>
+        </div>
+    </div>
+</template>
