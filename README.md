@@ -3,10 +3,10 @@
 A Nuxt 3 project that looks like Windows 11!
 
 ## Powered By
-[Nuxt 3](https://v3.nuxtjs.org/)
-[Vite](https://vitejs.dev/)
-[TailwindCSS](https://tailwindcss.com/)
-[Heroicons](https://heroicons.com/)
+[Nuxt 3](https://v3.nuxtjs.org/)<br />
+[Vite](https://vitejs.dev/)<br />
+[TailwindCSS](https://tailwindcss.com/)<br />
+[Heroicons](https://heroicons.com/)<br />
 [VueUse](https://vueuse.org/)
 
 ## Setup
