@@ -1,6 +1,13 @@
-# Nuxt 3 Minimal Starter
+# winonweb
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+A Nuxt 3 project that looks like Windows 11!
+
+## Powered By
+[Nuxt 3](https://v3.nuxtjs.org/)
+[Vite](https://vitejs.dev/)
+[TailwindCSS](https://tailwindcss.com/)
+[Heroicons](https://heroicons.com/)
+[VueUse](https://vueuse.org/)
 
 ## Setup
 
