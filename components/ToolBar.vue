@@ -1,6 +1,7 @@
 <script setup>
 import { vOnClickOutside } from '@vueuse/components'
-import { EnvelopeOpenIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
+import { EnvelopeOpenIcon, MagnifyingGlassIcon, UserCircleIcon, PowerIcon } from '@heroicons/vue/24/solid';
+
 const isOpen = ref(false);
 const onSearchFocused = (event) => {
     event.target.placeholder = 'Search work and your PC';
@@ -8,13 +9,11 @@ const onSearchFocused = (event) => {
 const clickOutside = () => {
     isOpen.value = false
 }
-
 const keyupHandler = (event) => {
     if (event.keyCode === 27) {
         isOpen.value = false;
     }
 }
-
 onMounted(() => {
     document.addEventListener('keyup', keyupHandler)
 })
@@ -27,14 +26,24 @@ onMounted(() => {
             leave-active-class="transition duration-200 transform ease-out" leave-from-class="translate-y-0 opacity-100"
             leave-to-class="translate-y-10 opacity-0">
             <div v-if="isOpen"
-                class="w-full lg:w-5/12 2xl:w-4/12 h-auto bg-gray-800 rounded-md border border-gray-700 bg-opacity-90 backdrop-blur-sm absolute bottom-14 lg:bottom-16 left-0 lg:left-2 p-6">
-                <div>
+                class="w-full lg:w-5/12 2xl:w-4/12 h-auto bg-gray-800 rounded-md border border-gray-700 bg-opacity-90 backdrop-blur-sm absolute bottom-14 lg:bottom-16 left-0 lg:left-2 pt-6">
+                <div class="px-6 mb-6">
                     <form action="" class="relative">
                         <MagnifyingGlassIcon class="w-4 absolute top-1/2 -translate-y-1/2 left-4 text-gray-300" />
                         <input type="text" placeholder="Type here to search"
                             class="bg-gray-900 w-full px-12 py-2.5 text-sm placeholder:text-gray-300 focus:placeholder:text-gray-200 rounded-md border-b-2 border-b-sky-500 focus:outline-none focus:ring-0 text-white"
                             @focus="onSearchFocused">
                     </form>
+                </div>
+                <div class="bg-black rounded-b px-4 py-2.5 bg-opacity-30 flex items-center justify-between">
+                    <button type="button"
+                        class="flex items-center space-x-2 cursor-default px-4 py-1 hover:bg-white hover:bg-opacity-10 rounded">
+                        <UserCircleIcon class="w-8 text-gray-200" />
+                        <span class="text-gray-200 text-xs">Guest User</span>
+                    </button>
+                    <button type="button" class="p-2 hover:bg-white hover:bg-opacity-10 rounded cursor-default">
+                        <PowerIcon class="w-5 text-gray-200" />
+                    </button>
                 </div>
             </div>
         </transition>
@@ -48,5 +57,6 @@ onMounted(() => {
                 <EnvelopeOpenIcon class="w-6 text-purple-300" />
             </button>
         </div>
+
     </div>
 </template>
