@@ -19,7 +19,7 @@ const desktopItems = [
         color: 'text-amber-300'
     },
     {
-        name: 'Projects',
+        name: 'Apps',
         icon: FolderIcon,
         color: 'text-amber-300'
     },
