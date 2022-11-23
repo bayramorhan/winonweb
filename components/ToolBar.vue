@@ -51,7 +51,7 @@ onMounted(() => {
             </div>
         </transition>
         <div
-            class="text-white bg-gray-800 py-1.5 px-2.5 border-t border-t-gray-600 bg-opacity-80 backdrop-blur-sm flex justify-between items-center">
+            class="text-white bg-gray-800 py-1 px-2.5 border-t border-t-gray-600 bg-opacity-80 backdrop-blur-sm flex justify-between items-center">
             <div>
                 <button type="button" @click="isOpen = !isOpen"
                     class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default focus:outline-none focus:ring-0">
@@ -63,10 +63,17 @@ onMounted(() => {
                 </button>
             </div>
 
-            <div class="text-xs text-right space-y-0.5 pr-2 select-none">
-                <div>{{ currentTime }}</div>
-                <div>{{ currentDate }}</div>
+            <div
+                class="text-xs text-right space-y-0.5 select-none px-2 py-1.5  hover:bg-white hover:bg-opacity-10 rounded flex items-center space-x-2.5 transition duration-200">
+                <div>
+                    <div>{{ currentTime }}</div>
+                    <div>{{ currentDate }}</div>
+                </div>
+
+                <span
+                    class="w-4 h-4.5 bg-sky-500 rounded-full flex items-center justify-center text-black text-xs">1</span>
             </div>
+
         </div>
 
     </div>
