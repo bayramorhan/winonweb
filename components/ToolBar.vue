@@ -2,6 +2,8 @@
 import { vOnClickOutside } from '@vueuse/components'
 import { EnvelopeOpenIcon, MagnifyingGlassIcon, UserCircleIcon, PowerIcon } from '@heroicons/vue/24/solid';
 
+const { currentDate, currentTime } = useDatetimeHelper();
+
 const isOpen = ref(false);
 const onSearchFocused = (event) => {
     event.target.placeholder = 'Search work and your PC';
@@ -14,8 +16,9 @@ const keyupHandler = (event) => {
         isOpen.value = false;
     }
 }
+
 onMounted(() => {
-    document.addEventListener('keyup', keyupHandler)
+    document.addEventListener('keyup', keyupHandler);
 })
 </script>
 
@@ -47,15 +50,23 @@ onMounted(() => {
                 </div>
             </div>
         </transition>
-        <div class="text-white bg-gray-800 py-1.5 px-2.5 border-t border-t-gray-600 bg-opacity-80 backdrop-blur-sm">
-            <button type="button" @click="isOpen = !isOpen"
-                class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default focus:outline-none focus:ring-0">
-                <img src="/img/windows-logo.svg" class="w-6" alt="">
-            </button>
-            <button type="button"
-                class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default">
-                <EnvelopeOpenIcon class="w-6 text-purple-300" />
-            </button>
+        <div
+            class="text-white bg-gray-800 py-1.5 px-2.5 border-t border-t-gray-600 bg-opacity-80 backdrop-blur-sm flex justify-between items-center">
+            <div>
+                <button type="button" @click="isOpen = !isOpen"
+                    class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default focus:outline-none focus:ring-0">
+                    <img src="/img/windows-logo.svg" class="w-6" alt="">
+                </button>
+                <button type="button"
+                    class="py-2 px-2.5 hover:bg-gray-50 rounded hover:shadow hover:bg-opacity-5 hover:cursor-default">
+                    <EnvelopeOpenIcon class="w-6 text-gray-100" />
+                </button>
+            </div>
+
+            <div class="text-xs text-right space-y-0.5 pr-2 select-none">
+                <div>{{ currentTime }}</div>
+                <div>{{ currentDate }}</div>
+            </div>
         </div>
 
     </div>

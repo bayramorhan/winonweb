@@ -20,14 +20,14 @@ const emits = defineEmits(['close'])
             </div>
 
             <div class="absolute top-0 right-0">
-                <button type="button" class="text-white py-1.5 px-2.5 hover:bg-gray-900">
+                <button type="button" class="text-white py-1.5 px-2.5 hover:bg-gray-900 cursor-default">
                     <MinusIcon class="w-5" />
                 </button>
-                <button type="button" class="text-white py-1.5 px-2.5 hover:bg-gray-900">
+                <button type="button" class="text-white py-1.5 px-2.5 hover:bg-gray-900 cursor-default">
                     <Square2StackIcon class="w-5" />
                 </button>
                 <button type="button" @click="$emit('close')"
-                    class="text-white py-1.5 px-2.5 hover:bg-red-600 rounded-tr-md ">
+                    class="text-white py-1.5 px-2.5 hover:bg-red-600 rounded-tr-md cursor-default">
                     <XMarkIcon class="w-5" />
                 </button>
             </div>

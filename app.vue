@@ -27,6 +27,11 @@ const closeCtxMenu = () => {
   ctxMenu.isActive = false
 }
 
+const reload = () => {
+  ctxMenu.isActive = false
+  location.reload();
+}
+
 onMounted(() => {
   document.addEventListener('fullscreenchange', fullscreenHandler);
 })
@@ -35,7 +40,7 @@ onMounted(() => {
 <template>
   <main class="relative overflow-hidden" @contextmenu="onContextMenu">
     <transition enter-active-class="transition duration-200" enter-from-class="opacity-0" enter-to-class="opacity-100">
-      <div v-if="ctxMenu.isActive" class="bg-gray-800 bg-opacity-80 backdrop-blur absolute rounded-md w-60 z-50"
+      <div v-if="ctxMenu.isActive" class="bg-gray-800 bg-opacity-80 backdrop-blur absolute rounded-md w-60 z-[100]"
         :style="{ top: ctxMenu.y, left: ctxMenu.x }">
         <ul v-on-click-outside="closeCtxMenu" class="text-sm text-gray-300 p-2">
           <li class="px-2 select-none py-2 hover:bg-white hover:bg-opacity-5 rounded flex space-x-2.5 items-center">
@@ -46,7 +51,8 @@ onMounted(() => {
             <ArrowsUpDownIcon class="w-4 text-sky-500" />
             <span>Sort by</span>
           </li>
-          <li class="px-2 select-none py-2 hover:bg-white hover:bg-opacity-5 rounded flex space-x-2.5 items-center">
+          <li class="px-2 select-none py-2 hover:bg-white hover:bg-opacity-5 rounded flex space-x-2.5 items-center"
+            @click="reload">
             <ArrowPathIcon class="w-4" />
             <span>Refresh</span>
           </li>
