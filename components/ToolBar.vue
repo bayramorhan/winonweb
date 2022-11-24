@@ -2,20 +2,8 @@
 import { vOnClickOutside } from '@vueuse/components'
 import { EnvelopeOpenIcon, MagnifyingGlassIcon, UserCircleIcon, PowerIcon } from '@heroicons/vue/24/solid';
 
+const { isOpen, clickOutside, keyupHandler, onSearchFocused } = useToolbar();
 const { currentDate, currentTime } = useDatetimeHelper();
-
-const isOpen = ref(false);
-const onSearchFocused = (event) => {
-    event.target.placeholder = 'Search work and your PC';
-}
-const clickOutside = () => {
-    isOpen.value = false
-}
-const keyupHandler = (event) => {
-    if (event.keyCode === 27) {
-        isOpen.value = false;
-    }
-}
 
 onMounted(() => {
     document.addEventListener('keyup', keyupHandler);

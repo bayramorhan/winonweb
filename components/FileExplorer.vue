@@ -1,6 +1,7 @@
 <script setup>
 import { Square2StackIcon } from '@heroicons/vue/24/outline';
 import { XMarkIcon, MinusIcon } from '@heroicons/vue/24/solid';
+import * as HeroIcons from '@heroicons/vue/24/solid';
 
 const props = defineProps(["folder"])
 const emits = defineEmits(['close'])
@@ -12,7 +13,7 @@ const emits = defineEmits(['close'])
         <div class="w-full bg-black bg-opacity-40 pt-2.5 flex justify-between px-4">
             <div
                 class="bg-gray-900 py-2.5 w-56 text-white rounded-t-md px-4 text-xs flex items-center space-x-2.5 relative">
-                <component :is="folder.icon" class="w-4" :class="folder.color"></component>
+                <component :is="HeroIcons[folder.icon]" class="w-4" :class="folder.color"></component>
                 <span>{{ folder.name }}</span>
                 <button type="button" class="absolute right-2 p-1 hover:bg-gray-800 rounded">
                     <XMarkIcon class="w-4" />

@@ -13,9 +13,12 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.13",
+    "@lottiefiles/vue-lottie-player": "^1.0.9",
+    "@pinia/nuxt": "^0.4.5",
     "@vueuse/components": "^9.5.0",
     "@vueuse/core": "^9.5.0",
-    "sass": "^1.56.0"
+    "sass": "^1.56.0",
+    "vue3-lottie": "^2.4.0"
   },
   "version": "0.0.5"
 }
