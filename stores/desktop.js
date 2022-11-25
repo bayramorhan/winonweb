@@ -5,30 +5,35 @@ export const useDesktopStore = defineStore('desktop', () => {
             name: 'Documents',
             icon: 'FolderIcon',
             color: 'text-amber-300',
+            component: 'FileExplorer',
             removable: true
         },
         {
             name: 'Games',
             icon: 'FolderIcon',
             color: 'text-amber-300',
+            component: 'FileExplorer',
             removable: true
         },
         {
             name: 'Pictures',
             icon: 'FolderIcon',
             color: 'text-amber-300',
+            component: 'FileExplorer',
             removable: true
         },
         {
             name: 'Apps',
             icon: 'FolderIcon',
             color: 'text-amber-300',
+            component: 'FileExplorer',
             removable: true
         },
         {
             name: 'Recycle Bin',
             icon: 'TrashIcon',
             color: 'text-gray-100',
+            component: 'FileExplorer',
             removable: false
         },
         {
@@ -36,8 +41,17 @@ export const useDesktopStore = defineStore('desktop', () => {
             icon: 'Spotify',
             customIcon: true,
             color: 'text-gray-100',
+            component: 'InstallerSpotify',
             removable: true,
             executable: true
+        },
+        {
+            name: 'README',
+            icon: 'DocumentIcon',
+            color: 'text-gray-100',
+            component: 'TextReader',
+            removable: false,
+            txtfile: true
         }
     ]);
 

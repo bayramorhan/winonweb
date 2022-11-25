@@ -4,11 +4,28 @@ import { OnClickOutside } from '@vueuse/components'
 import { useDesktopStore } from '~~/stores/desktop';
 import * as HeroIcons from '@heroicons/vue/24/solid';
 import SpotifyIcon from '../components/icons/Spotify.vue'
+import FileExplorer from '~~/components/FileExplorer.vue';
+import TextReader from '~~/components/TextReader.vue';
+import InstalerSpotify from '~~/components/installer/Spotify.vue';
 
 const customIcons = [
     {
         name: 'Spotify',
         icon: SpotifyIcon
+    }
+]
+const components = [
+    {
+        name: 'FileExplorer',
+        component: FileExplorer
+    },
+    {
+        name: 'TextReader',
+        component: TextReader
+    },
+    {
+        name: 'InstallerSpotify',
+        component: InstalerSpotify
     }
 ]
 const desktop = useDesktopStore();
@@ -42,14 +59,14 @@ onMounted(() => {
         <Transition enter-active-class="transition duration-200" enter-from-class="opacity-0"
             enter-to-class="opacity-100" leave-active-class="transition duration-200"
             leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0">
-            <FileExplorer v-if="selectedItem && !selectedItem.executable" :folder="selectedItem"
-                @close="selectedItem = ''" />
-            <InstallerSpotify v-else-if="selectedItem" @close="selectedItem = ''" @setup-complete="selectedItem = ''" />
+            <component :is="components.find(component => component.name === selectedItem.component).component"
+                v-if="selectedItem" s @close="selectedItem = ''" :folder="selectedItem"
+                @setup-complete="selectedItem = ''" />
         </Transition>
         <div class="flex flex-col relative flex-1">
             <OnClickOutside @trigger="softSelectedItem = ''">
                 <ul
-                    class="inline-flex md:flex-col flex-wrap items-start justify-between md:justify-start list-none gap-y-4 gap-x-2 p-2 max-h-screen">
+                    class="inline-flex md:flex-col flex-wrap items-start justify-between md:justify-start list-none gap-y-4 gap-x-2 p-2 max-h-custom">
                     <li v-for="(desktopItem, key) in desktop.items" :key="key">
                         <button type="button" @click="softSelectedItem = desktopItem"
                             @dblclick="onItemSelected(desktopItem)"
@@ -69,3 +86,9 @@ onMounted(() => {
         <ToolBar />
     </div>
 </template>
+
+<style>
+.max-h-custom {
+    max-height: calc(100vh - 100px);
+}
+</style>
